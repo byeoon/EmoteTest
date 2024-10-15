@@ -6,7 +6,7 @@ import { Text, ScrollView, TouchableOpacity, FormRow, FormInput, FormDivider } f
 import manifest from '../manifest.json';
 import {get} from "enmity/api/settings";
 import Page from "./components/Page";
-import fetchImage from '../TODO/GetDataURL';
+import fetchImage from './components/GetDataURL';
 import {GuildsStore, PermissionsStore, EmoteUploader, downloadMediaAsset} from "./components/EmoteClone";
 import findInReactTree from 'enmity/utilities/findInReactTree';
 import {getIDByName} from "enmity/api/assets";
@@ -78,6 +78,7 @@ const EmotesPlus: Plugin = {
                          size={Button.Sizes.SMALL}
                          onPress={() => {
                           fetchImage(emojiNode.src, (emoteUrl) => {
+                            console.log("[EmotesPlus] Debug: EmoteURL:" + emoteUrl);
                             ClipboardImage.setImage(emoteUrl.split(',')[1]);
                          })
                          showToast("Copied Emote as image!");
